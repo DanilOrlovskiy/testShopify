@@ -3,13 +3,13 @@
     opacity: 0;
     transition: opacity .35s ease-out;
     --slides: 3;
-    height: calc(var(--slides) * 100vh);
+    height: 100%;
     position: relative;
+    height: calc(var(--slides) * 100vh);
     }
     #scroll-slider-{{ section.id }} .scroll-slider__inner{
     position: sticky;
-    top: 0;
-    height: 100vh;
+    top: 80px;
     }
 
     #scroll-slider-{{ section.id }} .scroll-slider__header{
@@ -151,6 +151,23 @@
     display:grid;
     place-items:center;
     cursor:pointer;
+    }
+
+    @media(max-height:1080px){
+    #scroll-slider-{{ section.id }} .scroll-slider__inner{
+    top: -80px;
+    }
+    }
+
+    @media(max-height:850px){
+    #scroll-slider-{{ section.id }} .scroll-slider__inner{
+    top: -180px;
+    }
+    }
+    @media(max-height:650px){
+    #scroll-slider-{{ section.id }} .scroll-slider__inner{
+    top: -300px;
+    }
     }
 
     @media(min-width:1280px){
@@ -466,8 +483,6 @@
         showSlider();
     });
 </script>
-
-
 
 {% schema %}
 {
