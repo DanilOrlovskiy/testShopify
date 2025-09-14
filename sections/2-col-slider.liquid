@@ -312,14 +312,14 @@
     }
 {% endstyle %}
 
-<section id="scroll-slider-{{ section.id }}" class="scroll-slider" data-section-id="{{ section.id }}">
+<section id="scroll-slider-{{ section.id }}" class="scroll-slider">
     <div class="scroll-slider__inner page-width">
-        <header class="scroll-slider__header">
+        <div class="scroll-slider__header">
             {%- if section.settings.small_heading != blank -%}
                 <p class="scroll-slider__small">{{ section.settings.small_heading }}</p>
             {%- endif -%}
             <div class="scroll-slider__title rte">{{ section.settings.title_rich }}</div>
-        </header>
+        </div>
         <div class="scroll-slider__grid" style="--media-w: {{ section.settings.desktop_media_width }}%;">
             <div class="scroll-slider__left">
                 <ol class="scroll-slider__steps js-steps">
