@@ -73,6 +73,7 @@
           "settings": {
             "title": "Overlooking Fundamentals",
             "text": "<p>Generic solutions and sleep/health trackers gather information on how you are doing, rather than help you get where you want to be.</p>",
+            "image": "shopify://shop_images/beautiful-fall-nature-scenery-free-image.webp",
             "image_alt": "Feature image 2"
           }
         },
@@ -81,6 +82,7 @@
           "settings": {
             "title": "AYO is Different",
             "text": "<p>Generic solutions and sleep/health trackers gather information on how you are doing, rather than help you get where you want to be.</p>",
+            "image": "shopify://shop_images/free-nature-images.jpg",
             "image_alt": "Feature image 3"
           }
         }
