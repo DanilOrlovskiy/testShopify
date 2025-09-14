@@ -62,30 +62,25 @@
         "step_WQ4QwQ": {
           "type": "step",
           "settings": {
-            "icon": "shopify://shop_images/Buttton.svg",
             "title": "Half Measures",
             "text": "<p>Generic solutions and sleep/health trackers gather information on how you are doing, rather than help you get where you want to be.</p>",
-            "image": "shopify://shop_images/Rectangle_313.jpg",
+            "image": "shopify://shop_images/theme_cover_image.jpg",
             "image_alt": "Feature image 1"
           }
         },
         "step_BGVbpb": {
           "type": "step",
           "settings": {
-            "icon": "shopify://shop_images/Buttton2.svg",
             "title": "Overlooking Fundamentals",
             "text": "<p>Generic solutions and sleep/health trackers gather information on how you are doing, rather than help you get where you want to be.</p>",
-            "image": "shopify://shop_images/Rectangle_313_1.jpg",
             "image_alt": "Feature image 2"
           }
         },
         "step_88Tftr": {
           "type": "step",
           "settings": {
-            "icon": "shopify://shop_images/Buttton1.svg",
             "title": "AYO is Different",
             "text": "<p>Generic solutions and sleep/health trackers gather information on how you are doing, rather than help you get where you want to be.</p>",
-            "image": "shopify://shop_images/Rectangle_313_2.jpg",
             "image_alt": "Feature image 3"
           }
         }
