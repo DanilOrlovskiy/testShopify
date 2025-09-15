@@ -65,7 +65,7 @@
     transition: opacity 0.1s ease-out;
     }
     #scroll-slider-{{ section.id }} .step__icon-wrapper .step__icon{
-    margin-bottom: 32px;
+    margin: 0 0 32px 0;
     }
     #scroll-slider-{{ section.id }} .step__title{
     margin: 0;
@@ -326,12 +326,13 @@
                     {%- for block in section.blocks -%}
                         <li id="step-{{ section.id }}-{{ forloop.index0 }}"
                             class="scroll-slider__step js-step"
-                            data-index="{{ forloop.index0 }}"
-                                {{ block.shopify_attributes }}>
+                            data-index="{{ forloop.index0 }}" {{ block.shopify_attributes }}>
                             <div class="step__head">
                                 {%- if block.settings.icon != blank -%}
                                     <div class="step__icon-wrapper">
-                                        <img class="step__icon" src="{{ block.settings.icon | image_url: width: 40 }}" alt="" loading="lazy" width="40" height="40" />
+                                        <figure class="step__icon">
+                                            {{ block.settings.icon | image_url: width: 40 | image_tag: loading: 'lazy', sizes: '40px', alt: block.settings.image_alt | escape }}
+                                        </figure>
                                     </div>
                                 {%- endif -%}
                                 <h3 class="step__title">{{ block.settings.title | escape }}</h3>
@@ -381,21 +382,21 @@
         if (!root) return;
 
         const slides = Array.from(root.querySelectorAll('.js-slider__slide'));
-        const steps  = Array.from(root.querySelectorAll('.js-step'));
+        const steps = Array.from(root.querySelectorAll('.js-step'));
         if (!slides.length) return;
 
         let current = slides.findIndex(slide => slide.classList.contains('is-active'));
         if (current < 0) current = 0;
 
         slides.forEach((el, idx) => el.classList.toggle('is-active', idx === current));
-        steps.forEach((el, idx)  => el.classList.toggle('is-active',  idx === current));
+        steps.forEach((el, idx) => el.classList.toggle('is-active',  idx === current));
 
         root.style.setProperty('--slides', String(slides.length));
 
         function setActive(i){
             if (i < 0 || i >= slides.length || i === current) return;
             slides.forEach((el, idx) => el.classList.toggle('is-active', idx === i));
-            steps.forEach((el, idx)  => el.classList.toggle('is-active',  idx === i));
+            steps.forEach((el, idx) => el.classList.toggle('is-active',  idx === i));
             current = i;
         }
 
@@ -410,7 +411,7 @@
         function getSpan(){
             const vh = viewportHeight();
             const start = root.offsetTop;
-            const end = window.innerWidth > 990 ? start + root.offsetHeight - vh : start + root.offsetHeight + 400 - vh;
+            const end = start + root.offsetHeight - vh;
             const span = Math.max(1, end - start);
             const per = span / slides.length;
             return { start, end, span, per };
@@ -486,84 +487,84 @@
 
 {% schema %}
 {
-    "name": "Slider (2-col)",
-    "settings": [
-        {
-            "type":"text",
-            "id":"small_heading",
-            "label":"Small heading",
-            "default":"The Problem"
-        },
-        {
-            "type":"richtext",
-            "id":"title_rich",
-            "label":"Title (richtext)",
-            "default":"<p>Make your <strong>workflow</strong> faster</p>"
-        },
-        {
-            "type":"range",
-            "id":"desktop_media_width",
-            "min":40,
-            "max":80,
-            "step":1,
-            "unit":"%",
-            "label":"Desktop right column width",
-            "default":50
-        }
-    ],
-    "blocks":[
-        {
-            "type":"step",
-            "name":"Step",
-            "limit": 3,
-            "settings":[
-                {
-                    "type":"image_picker",
-                    "id":"icon",
-                    "label":"Icon"
-                },
-                {
-                    "type":"text",
-                    "id":"title",
-                    "label":"Title",
-                    "default":"Title"
-                },
-                {
-                    "type":"richtext",
-                    "id":"text",
-                    "label":"Text",
-                    "default":"<p>Explain feature here</p>"
-                },
-                {
-                    "type":"image_picker",
-                    "id":"image",
-                    "label":"Image"
-                },
-                {
-                    "type":"text",
-                    "id":"image_alt",
-                    "label":"Image alt",
-                    "default":"Feature image"
-                }
-            ]
-        }
-    ],
-    "presets":[
-        {
-            "name":"Scroll + Slider",
-            "category":"Image",
-            "blocks":[
-                {
-                    "type":"step"
-                },
-                {
-                    "type":"step"
-                },
-                {
-                    "type":"step"
-                }
-            ]
-        }
-    ]
+"name": "Slider (2-col)",
+"settings": [
+{
+"type":"text",
+"id":"small_heading",
+"label":"Small heading",
+"default":"The Problem"
+},
+{
+"type":"richtext",
+"id":"title_rich",
+"label":"Title (richtext)",
+"default":"<p>Make your <strong>workflow</strong> faster</p>"
+},
+{
+"type":"range",
+"id":"desktop_media_width",
+"min":40,
+"max":80,
+"step":1,
+"unit":"%",
+"label":"Desktop right column width",
+"default":50
+}
+],
+"blocks":[
+{
+"type":"step",
+"name":"Step",
+"limit": 3,
+"settings":[
+{
+"type":"image_picker",
+"id":"icon",
+"label":"Icon"
+},
+{
+"type":"text",
+"id":"title",
+"label":"Title",
+"default":"Title"
+},
+{
+"type":"richtext",
+"id":"text",
+"label":"Text",
+"default":"<p>Explain feature here</p>"
+},
+{
+"type":"image_picker",
+"id":"image",
+"label":"Image"
+},
+{
+"type":"text",
+"id":"image_alt",
+"label":"Image alt",
+"default":"Feature image"
+}
+]
+}
+],
+"presets":[
+{
+"name":"Scroll + Slider",
+"category":"Image",
+"blocks":[
+{
+"type":"step"
+},
+{
+"type":"step"
+},
+{
+"type":"step"
+}
+]
+}
+]
 }
 {% endschema %}
